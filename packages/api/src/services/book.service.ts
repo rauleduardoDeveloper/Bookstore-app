@@ -32,7 +32,7 @@ export const getAllBooks = async (filters: { title?: string; author?: string; us
         favoriteIds = favorites.map(fav => fav.bookId.toString());
     }
 
-    return books.map(book => ({
+    return books.map((book: any) => ({
         ...book,
         isFavorite: favoriteIds.includes(book._id.toString())
     }));
