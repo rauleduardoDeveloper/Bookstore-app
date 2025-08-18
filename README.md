@@ -1,90 +1,107 @@
-# Bookstore
+# 📚 Online Bookstore Application
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+An online bookstore application built with **React (frontend)**, **Node.js/Express (backend)**, and **MongoDB (database)**.  
+Users can browse books, search by title or author, view book details, register/login, and manage their list of favorite books.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## 🚀 Features
 
-## Finish your remote caching setup
+- **Browse & Search** books by title or author.
+- **View Book Details** with cover images and descriptions.
+- **User Authentication** (signup & login).
+- **Favorites Management** – add/remove books from favorites.
+- **Responsive UI** built with React.
+- **Backend API** with CRUD operations.
+- **Unit Tests** for both frontend and backend.
+- **Dockerized Setup** for easy deployment.
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/7KjNzfSsjd)
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, TypeScript, Redux Toolkit, Bootstrap  
+- **Backend:** Node.js, Express, MongoDB, Mongoose  
+- **Monorepo Tooling:** Nx  
+- **Testing:** Jest, React Testing Library  
+- **Containerization:** Docker, Docker Compose  
+
+---
+## ⚙️ Setup / Installation
+
+1. Install dependencies:
+
+```bash
+npm install
+````
+
+2. Create a .env file in the project root with the following content:
+
+```bash
+PORT=5000
+MONGO_URI=mongodb+srv://rauleduardodeveloper:mTgGVQVMshRHUbm1@cluster0.r6bnrqw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+SECRET_KEY=thisisasecretkey
+NODE_ENV=development
+````
 
 
-## Generate a library
+### 🔹 Start Backend (API)
+Run the backend service with:
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
+```bash
+npx nx serve api
+``` 
+### 🔹 Start Frontend (UI)
+Run the frontend service with:
+
+```bash
+npx nx serve ui
+``` 
+###  🧪 Running Tests
+```bash
+npx nx test ui
+npx nx test api
+``` 
+### 🔹 Run with Docker
+```bash
+docker compose build
+docker compose up
 ```
+### 📂 Project Structure
+```bash 
+.
+├── .nx/ # Nx workspace internals
+├── .vscode/ # VSCode settings
+├── coverage/ # Test coverage reports
+├── dist/
+│ ├── uploads/ # Uploaded book files (demo data)
+│ └── packages/ # Built output for api & ui
+│
+├── node_modules/ # Dependencies
+│
+├── packages/
+│ ├── api/ # Backend (Express, DB, API routes)
+│ └── ui/ # Frontend (React app)
+│
+├── shared-types/
+│ └── src/ # Shared TypeScript types
+│
+├── .dockerignore
+├── .env # Environment variables
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── docker-compose.yaml # Docker setup for full app
+├── Dockerfile # Multi-stage build for API & UI
+├── error.log # Error logs
+├── eslint.config.js # ESLint config
+├── jest.config.ts # Jest config
+├── jest.preset.js
+├── nx.json # Nx workspace config
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.base.json
+└── tsconfig.json
+``` 
 
-## Run tasks
-
-To build the library use:
-
-```sh
-npx nx build pkg1
-```
-
-To run any task with Nx use:
-
-```sh
-npx nx <target> <project-name>
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
-
-```
-npx nx release
-```
-
-Pass `--dry-run` to see what would happen without actually releasing the library.
-
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Keep TypeScript project references up to date
-
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
-
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
-
-```sh
-npx nx sync
-```
-
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
-
-```sh
-npx nx sync:check
-```
-
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
-
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
