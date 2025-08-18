@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSignup } from "hooks/useSignup";
 import { AuthForm } from "components/AuthForm";
+import { Link } from "react-router-dom";
 
 export default function SignupPage() {
     const [name, setName] = useState("");
@@ -28,6 +29,12 @@ export default function SignupPage() {
                 { label: "Password", type: "password", value: password, onChange: (e) => setPassword(e.target.value) },
                 { label: "Confirm Password", type: "password", value: confirmPassword, onChange: (e) => setConfirmPassword(e.target.value) }
             ]}
+            extraAction={
+                <p>
+                    Already have an account?{" "}
+                    <Link to="/login">Login</Link>
+                </p>
+            }
         />
     );
 }

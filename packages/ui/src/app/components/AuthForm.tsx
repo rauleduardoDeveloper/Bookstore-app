@@ -3,7 +3,15 @@ import { AuthFormProps } from '@bookstore/shared-types';
 
 
 
-export function AuthForm({ title, fields, onSubmit, submitLabel, isLoading, error }: AuthFormProps) {
+export function AuthForm({
+    title,
+    fields,
+    onSubmit,
+    submitLabel,
+    isLoading,
+    error,
+    extraAction
+}: AuthFormProps & { extraAction?: React.ReactNode }) {
     return (
         <div className="container-fluid d-flex w-100 min-vh-100 justify-content-center align-items-center">
             <div className="row justify-content-center w-100">
@@ -26,6 +34,11 @@ export function AuthForm({ title, fields, onSubmit, submitLabel, isLoading, erro
                         </button>
                         {error && <p style={{ color: "red" }}>{error}</p>}
                     </form>
+                    {extraAction && (
+                        <div className="text-center mt-3">
+                            {extraAction}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ services:
       context: .
       target: api
     ports:
-      - "5000:3000"  
+      - "5000:5000"  
     depends_on:
       - ui
     env_file:
