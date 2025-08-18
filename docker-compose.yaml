@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+      target: api
+    ports:
+      - "5000:3000"  
+    depends_on:
+      - ui
+    env_file:
+      - .env
+
+  ui:
+    build:
+      context: .
+      target: ui
+    ports:
+      - "4200:80"     
